@@ -11,85 +11,16 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
 
 
+const managerPrompt = require("./src/questions/managerPrompt.js");
+
+const userChoicePrompt = require("./src/questions/userChoicePrompt.js");
+
+const engineerPrompt = require("./src/questions/engineerPrompt");
+
+const internPrompt = require("./src/questions/internPrompt");
+
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-const managerPrompt = [
-    {
-        type: "input",
-        name: "name",
-        message: "Enter Manager's name"
-    },
-    {
-        type: "input",
-        name: "employeeId",
-        message: "Enter Employee ID"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Enter Manager's email adress"
-    },
-    {
-        type: "input",
-        name: "officeNumber",
-        message: "Enter office number"
-    }
-
-]
-
-const userChoicePrompt = [
-    {
-        type: "list",
-        name: "userChoice",
-        message: "What do you want to do now?",
-        choices: ["Add an engineer", "Add an intern", "Finish building Team"]
-    }
-]
-
-const engineerPrompt = [  
-    {
-        type: "input",
-        name: "name",
-        message: "Enter engineer's name"
-    },
-    {
-        type: "input",
-        name: "employeeId",
-        message: "Enter Engineer's ID"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Enter Engineer's email adress"
-    },
-    {
-        type: "input",
-        name: "github",
-        message: "Enter Github username"
-    }
-]
-
-const internPrompt = [
-    {
-        type: "input",
-        name: "name",
-        message: "Enter Intern's name"
-    },
-    {
-        type: "input",
-        name: "employeeId",
-        message: "Enter Intern's ID"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Enter Intern's email adress"
-    },
-    {
-        type: "input",
-        name: "school",
-        message: "Enter school"
-    }
-]
+ 
 
 
 
@@ -142,13 +73,12 @@ async function init() {
        }
     }
 
-    console.log(team)
-    
+    const htmlTemplate = render(team);
 
-
+    fs.writeFile(outputPath, htmlTemplate, (err) => {
+        err ? console.error(err) : console.log("Sucess");
+    })
 }
 
+
 init();
-
-
-//Add an engineer", "Add an intern", "Finish building Team
