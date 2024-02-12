@@ -1,0 +1,19 @@
+/* ---------------- Style for Jumbotron  ------------- */
+.jumbotron {
+    background-color: black;
+    color: white;
+}
+
+
+
+/* -------------  Style for team cards ------------ */
+.employee-card {
+    width: 300px;
+    margin: 10px;
+}
+
+
+.card-header {
+    background-color: blanchedalmond;
+}
+
